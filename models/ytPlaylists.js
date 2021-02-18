@@ -1,12 +1,9 @@
 
 module.exports = function(sequelize, DataTypes) {
-  const YTChannels = sequelize.define("YTChannels", {
+  const YTPlaylists = sequelize.define("YTPlaylists", {
 
-    channelName: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
-    channelId: {
+  
+    playlistId: {
         type: DataTypes.STRING,
         allowNull: false,
     },
@@ -17,5 +14,5 @@ module.exports = function(sequelize, DataTypes) {
   });
  
 
-  return YTChannels;
+  return YTPlaylists;
 };
