@@ -6,11 +6,13 @@ const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
   app.get("/", (req, res) => {
+    // Landing page
+    res.render("index", {});
+  });
+
+  app.get("/calendar", (req, res) => {
     // If the user already has an account send them to the members page
-    if (req.user) {
-      res.redirect("/members");
-    }
-    res.sendFile(path.join(__dirname, "../public/signup.html"));
+    res.render("calendar", {});
   });
 
   app.get("/login", (req, res) => {

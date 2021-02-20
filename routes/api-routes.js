@@ -1,8 +1,34 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
+const getYTVideo = require("../controllers/googleapi");
 
 module.exports = function(app) {
+
+  app.get("/api/getVideo", (req, res) => {
+    const { categorySelected, durationSelected } = req.query;
+    db.YTPlaylists.findAll({
+      where: {
+        category: categorySelected
+      }
+      // the api searches our database for all playlists that match the category, we then select one of them randomly, and then call the youtube api.
+    }).then(async playlists => {
+      const randonNum = Math.floor(Math.random() * playlists.length);
+      const selectedPlaylistId = playlists[randonNum].dataValues.playlistId;
+      const newVideoArr = await getYTVideo(selectedPlaylistId, durationSelected);
+      const randonVideoNum = Math.floor(Math.random() * newVideoArr.length);
+      const newVideo = newVideoArr[randonVideoNum];
+      const videoUrl = `https://www.youtube.com/watch?v=${newVideo.id}`;
+      res.json(videoUrl);
+    });
+
+    // db.Author.findOne({
+    //   include: [db.Post],
+    //   where: {
+    //     id: req.params.id,
+    //   },
+    // }).then((dbAuthor) => res.json(dbAuthor));
+  });
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
