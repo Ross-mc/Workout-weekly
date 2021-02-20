@@ -5,15 +5,16 @@
   "main": "server.js",
   "scripts": {
     "test": "npm run lint",
-    "start": "node server.js",
+    "start": "node server.js AIzaSyAsH1FW-Hy5tigtG9_iOFT_PVhuoRULcCQ",
     "lint": "eslint --quiet .",
     "fix": "eslint --fix .",
-    "watch": "nodemon server.js"
+    "watch": "nodemon server.js AIzaSyAsH1FW-Hy5tigtG9_iOFT_PVhuoRULcCQ"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.21.1",
     "bcryptjs": "2.4.3",
     "express": "^4.17.0",
     "express-handlebars": "^5.2.1",
