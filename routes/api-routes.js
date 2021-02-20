@@ -18,7 +18,7 @@ module.exports = function(app) {
       const newVideoArr = await getYTVideo(selectedPlaylistId, durationSelected);
       const randonVideoNum = Math.floor(Math.random() * newVideoArr.length);
       const newVideo = newVideoArr[randonVideoNum];
-      const videoUrl = `https://www.youtube.com/watch?v=${newVideo.id}`;
+      const videoUrl = `https://www.youtube.com/embed/${newVideo.id}`;
       res.json(videoUrl);
     });
   });
