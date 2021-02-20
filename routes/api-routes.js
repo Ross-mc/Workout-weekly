@@ -21,13 +21,6 @@ module.exports = function(app) {
       const videoUrl = `https://www.youtube.com/watch?v=${newVideo.id}`;
       res.json(videoUrl);
     });
-
-    // db.Author.findOne({
-    //   include: [db.Post],
-    //   where: {
-    //     id: req.params.id,
-    //   },
-    // }).then((dbAuthor) => res.json(dbAuthor));
   });
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
