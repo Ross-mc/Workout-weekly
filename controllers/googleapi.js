@@ -2,7 +2,8 @@ const axios = require("axios").default;
 
 const getYTVideo = async (playlistId, durationInMins) => {
   const durationInSeconds = durationInMins * 60;
-  const apikey = process.argv[2];
+  const apikey = process.env.API_KEY;
+  console.log(apikey)
   const url = `https://www.googleapis.com/youtube/v3/playlistItems?&key=${apikey}&playlistId=${playlistId}&part=snippet,id&order=date&maxResults=50`;
   let validVideos = [];
 

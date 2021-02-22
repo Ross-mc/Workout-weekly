@@ -5,10 +5,10 @@
   "main": "server.js",
   "scripts": {
     "test": "npm run lint",
-    "start": "node server.js AIzaSyAsH1FW-Hy5tigtG9_iOFT_PVhuoRULcCQ",
+    "start": "node server.js",
     "lint": "eslint --quiet .",
     "fix": "eslint --fix .",
-    "watch": "nodemon server.js AIzaSyAsH1FW-Hy5tigtG9_iOFT_PVhuoRULcCQ"
+    "watch": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +16,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "bcryptjs": "2.4.3",
+    "dotenv": "^8.2.0",
     "express": "^4.17.0",
     "express-handlebars": "^5.2.1",
     "express-session": "^1.16.1",
