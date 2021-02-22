@@ -43,7 +43,7 @@ module.exports = function(app) {
       password: req.body.password
     })
       .then(() => {
-        res.redirect("/calendar");
+        res.redirect("/");
       })
       .catch(err => {
         res.status(401).json(err);
