@@ -35,6 +35,19 @@
         </div>
     </div>
 </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12" id ="weekly-calendar">
+            {{#each daysOfWeek}}
+            <div class = "day">
+                <h3>{{date}}</h3>
+            </div>
+
+            {{/each}}
+        </div>
+    </div>
+</div>
+
 
 {{!-- display user events --}}
 {{!-- add logic for creating events and set up post route to db --}}

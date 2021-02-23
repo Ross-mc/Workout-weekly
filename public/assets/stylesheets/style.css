@@ -10,12 +10,35 @@ form.login {
   margin-top: 50px;
 }
 
-h1 {
-  color: red;
+#weekly-calendar {
+	display: flex;
+	flex-flow: nowrap;
+	flex-direction: row;
+	justify-content: space-between;
 }
 
-#container {
-  background-color: red!important;
+.day {
+	flex: 14%;
+	margin: 0 auto;
+	height: 70vh;
+	border: 2px solid black;
+}
+
+.day:nth-child(odd) {
+	background-color: #3498db;
+}
+
+.day:nth-child(even) {
+	background-color: #ecf0f1;
+}
+
+.hour {
+	width: 100%;
+	height: 50px;
+}
+
+.time {
+	float:left;
 }
 
 form {

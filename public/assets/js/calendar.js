@@ -30,4 +30,31 @@ $(() => {
     });
   };
   $("#submitExerciseReq").on("click", submitExerciseReqHandler);
+
+  const hours = []
+        for(let i = 0; i < 24; i++) {
+          let time = ""
+          if(i < 10) {
+            time = `0${i}:00`
+          }
+          else {
+            time = `${i}:00`
+          }
+          hours.push(time)
+        }
+
+        $(".day").each((i, elem) => {
+          hours.forEach(hour => { 
+            console.log(hour)
+            const div = $("<div class='hour'>")
+            const p = $("<p class='time'>")
+            p.text(hour)
+            div.append(p)
+
+            // console.log()
+
+            $(elem).append(div)
+          })
+
+        })
 });
