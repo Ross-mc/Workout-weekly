@@ -1,5 +1,8 @@
 // Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require("../config/middleware/isAuthenticated");
+const db = require("../models");
+const getCurrentWeek = require("../controllers/getCurrentWeek");
+const moment = require("moment");
 
 module.exports = function(app) {
   app.get("/", (req, res) => {
@@ -24,11 +27,30 @@ module.exports = function(app) {
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/calendar/:id", isAuthenticated, (req, res) => {
     const id = parseInt(req.params.id);
-    console.log(req.user);
     if (req.user.id !== id){
       res.redirect("/");
     } else {
-      res.render("calendar", {});
+      
+      db.Events.findAll({
+        where: {
+          user_id: id,
+        }
+      }).then(userData => {
+        const { startOfWeek, endOfWeek } = getCurrentWeek();
+
+        const currentEvents = userData.filter(event => {
+          const startOfEvent = moment(event.dataValues.timeStart).unix();
+          const endOfEvent = moment(event.dataValues.timeEnd).unix();
+          if (startOfEvent > startOfWeek && endOfEvent < endOfWeek){
+            return true;
+          }
+        });
+
+        console.log(currentEvents)
+
+        res.render("calendar", {currentEvents});
+      })
+      
     }
     // to do: call db and get all the user events and pass to hbs as an object
 
