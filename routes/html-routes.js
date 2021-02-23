@@ -46,7 +46,8 @@ module.exports = function(app) {
           }
         });
 
-    
+        
+        
 
         res.render("calendar", {currentEvents, daysOfWeek});
       })
