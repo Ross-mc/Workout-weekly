@@ -36,7 +36,6 @@ module.exports = function(app) {
   });
 
   app.post("/api/createevent", (req, res) => {
-    console.log(req);
     const { timeStart, timeEnd, eventName, eventDesc, category } = req.body;
     const user_id = req.body.id;
     db.Events.create({
