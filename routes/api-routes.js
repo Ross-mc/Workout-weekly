@@ -4,7 +4,6 @@ const passport = require("../config/passport");
 const getYTVideo = require("../controllers/googleapi");
 
 module.exports = function(app) {
-
   app.get("/api/getVideo", (req, res) => {
     const { categorySelected, durationSelected } = req.query;
     db.YTPlaylists.findAll({
@@ -15,7 +14,10 @@ module.exports = function(app) {
     }).then(async playlists => {
       const randonNum = Math.floor(Math.random() * playlists.length);
       const selectedPlaylistId = playlists[randonNum].dataValues.playlistId;
-      const newVideoArr = await getYTVideo(selectedPlaylistId, durationSelected);
+      const newVideoArr = await getYTVideo(
+        selectedPlaylistId,
+        durationSelected
+      );
       const randonVideoNum = Math.floor(Math.random() * newVideoArr.length);
       const newVideo = newVideoArr[randonVideoNum];
       const videoUrl = `https://www.youtube.com/embed/${newVideo.id}`;
