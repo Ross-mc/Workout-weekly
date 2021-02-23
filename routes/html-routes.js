@@ -23,9 +23,15 @@ module.exports = function(app) {
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/calendar/:id", isAuthenticated, (req, res) => {
-    const id = req.params.id;
+    const id = parseInt(req.params.id);
+    console.log(req.user);
+    if (req.user.id !== id){
+      res.redirect("/");
+    } else {
+      res.render("calendar", {});
+    }
     // to do: call db and get all the user events and pass to hbs as an object
 
-    res.render("calendar", {});
+    
   });
 };
