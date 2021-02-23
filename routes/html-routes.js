@@ -36,7 +36,7 @@ module.exports = function(app) {
           user_id: id,
         }
       }).then(userData => {
-        const { startOfWeek, endOfWeek } = getCurrentWeek();
+        const { startOfWeek, endOfWeek, daysOfWeek } = getCurrentWeek();
 
         const currentEvents = userData.filter(event => {
           const startOfEvent = moment(event.dataValues.timeStart).unix();
@@ -46,9 +46,9 @@ module.exports = function(app) {
           }
         });
 
-        console.log(currentEvents)
+    
 
-        res.render("calendar", {currentEvents});
+        res.render("calendar", {currentEvents, daysOfWeek});
       })
       
     }
