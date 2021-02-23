@@ -35,6 +35,23 @@ module.exports = function(app) {
     });
   });
 
+  app.post("/api/createevent", (req, res) => {
+    const { timeStart, timeEnd, eventName, eventDesc, category } = req.body;
+    const user_id = req.body.id;
+    db.Events.create({
+      timeStart,
+      timeEnd,
+      eventName,
+      eventDesc,
+      category,
+      user_id
+    })
+      .then(() => res.json())
+      .catch(err => {
+        res.status(401).json(err);
+      })
+  })
+
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
