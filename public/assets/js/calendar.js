@@ -31,30 +31,33 @@ $(() => {
   };
   $("#submitExerciseReq").on("click", submitExerciseReqHandler);
 
-  const hours = []
-        for(let i = 0; i < 24; i++) {
-          let time = ""
-          if(i < 10) {
-            time = `0${i}:00`
-          }
-          else {
-            time = `${i}:00`
-          }
-          hours.push(time)
-        }
+  var workoutDatePicker = new Pikaday({ field: $('#workout-date')[0] });
+  var eventDatePicker = new Pikaday({ field: $('#event-date')[0] });
 
-        $(".day").each((i, elem) => {
-          hours.forEach(hour => { 
-            console.log(hour)
-            const div = $("<div class='hour'>")
-            const p = $("<p class='time'>")
-            p.text(hour)
-            div.append(p)
+  // const hours = []
+  //       for(let i = 0; i < 24; i++) {
+  //         let time = ""
+  //         if(i < 10) {
+  //           time = `0${i}:00`
+  //         }
+  //         else {
+  //           time = `${i}:00`
+  //         }
+  //         hours.push(time)
+  //       }
 
-            // console.log()
+  //       $(".day").each((i, elem) => {
+  //         hours.forEach(hour => { 
+  //           console.log(hour)
+  //           const div = $("<div class='hour'>")
+  //           const p = $("<p class='time'>")
+  //           p.text(hour)
+  //           div.append(p)
 
-            $(elem).append(div)
-          })
+  //           // console.log()
 
-        })
+  //           $(elem).append(div)
+  //         })
+
+  //       })
 });
