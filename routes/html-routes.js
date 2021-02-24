@@ -37,7 +37,7 @@ module.exports = function(app) {
         },
         order: [["timeStart", "ASC"]]
       }).then(userData => {
-        const { startOfWeek, endOfWeek, daysOfWeek } = getCurrentWeek();
+        const { startOfWeek, endOfWeek, days } = getCurrentWeek();
 
         const currentEvents = userData.filter(event => {
           const startOfEvent = moment(event.dataValues.timeStart).unix();
@@ -47,10 +47,25 @@ module.exports = function(app) {
           }
         });
 
-        console.log(currentEvents)
-        
+        // const dayArr = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
-        res.render("calendar", {currentEvents, daysOfWeek});
+        // const formattedEvents = currentEvents.map(event => {
+        //   const dayOfWeek = dayArr[moment(event.dataValues.timeStart).isoWeekday()];
+        //   const 
+        // });
+        console.log(days)
+
+        const daysOfWeekWithEvents = days.map(day => {
+          return currentEvents.reduce((acc, event) => {
+            if (moment(event.dataValues.timeStart).day() === moment(day).day()){
+              acc.events.push(event)
+            }
+            return acc;
+          }, {day: moment(day).format("dddd, MMMM Do YYYY"), events: []})
+        })
+       
+
+        res.render("calendar", {currentEvents, daysOfWeekWithEvents});
       })
       
     }
