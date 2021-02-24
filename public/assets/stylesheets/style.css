@@ -20,7 +20,7 @@ form.login {
 .day {
 	flex: 14%;
 	margin: 0 auto;
-	height: 70vh;
+	height: 200px;
 	border: 2px solid black;
 }
 
