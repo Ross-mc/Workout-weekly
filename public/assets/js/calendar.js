@@ -38,7 +38,7 @@ $(() => {
       );
       videoEl.attr("src", res);
       ytDiv.append(videoEl);
-      const saveBtn = $("<button class ='btn btn-primary' type= 'submit'>");
+      const saveBtn = $("<button class ='btn btn-primary' type= 'submit' id='saveVideo'>");
       const searchAgainBtn = $(
         "<button class='btn btn-primary' type='reset' value='Reset' id='searchAgain'>"
       );
@@ -60,7 +60,28 @@ $(() => {
   }
 
   const saveVideoHandler = () => {
+    const categorySelected = $("#category").val();
+    const durationSelected = $("#duration").val();
+    const dateSelected = $("#workout-date").val();
+    const hourSelected = $("#workout-hour").val();
+    const minutesSelected = $("#workout-minutes").val();
+    const arrayOfUrl = window.location.href.split("/");
+    const id = parseInt(arrayOfUrl[arrayOfUrl.length -1]);
+    console.log(dateSelected);
+    console.log(hourSelected);
+    console.log(minutesSelected);
+    console.log(id);
 
+    const timeStamp = "";
+
+    // $.ajax({
+    //   url: "/api/post",
+    //   data: {
+    //     categorySelected,
+    //     durationSelected
+    //   },
+    //   method: "GET"
+    // })
   }
 
 
@@ -69,6 +90,7 @@ $(() => {
   //dynamic click listeners
 
   $("body").on("click", "#searchAgain", searchAgainHandler);
+  $("body").on("click", "#saveVideo", saveVideoHandler);
 
   var workoutDatePicker = new Pikaday({ field: $('#workout-date')[0] });
   var eventDatePicker = new Pikaday({ field: $('#event-date')[0] });
