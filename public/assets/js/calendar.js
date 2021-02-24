@@ -74,24 +74,38 @@ $(() => {
 }
 
   const saveVideoHandler = () => {
-    const categorySelected = $("#category").val();
+    const category = $("#category").val();
     const durationSelected = $("#duration").val();
     const dateSelected = $("#workout-date").val();
     const hourSelected = $("#workout-hour").val();
     const minutesSelected = $("#workout-minutes").val();
+    let hourEnd = hourSelected;
+    let minutesEnd = minutesSelected;
+    if (minutesSelected + durationSelected > 60){
+      minutesEnd = minutesSelected + durationSelected - 60;
+      hourEnd++
+    }
     const arrayOfUrl = window.location.href.split("/");
     const id = parseInt(arrayOfUrl[arrayOfUrl.length -1]);
     const date = formatDate(dateSelected);
-    const timeStamp = `${date} ${hourSelected}:${minutesSelected}:00`;
+    const timeStart = `${date} ${hourSelected}:${minutesSelected}:00`;
+    const timeEnd = `${date} ${hourEnd}: ${minutesEnd}:00`;
+    const eventName = `${category} Exercise`;
+    const eventDesc = "";
 
-    // $.ajax({
-    //   url: "/api/post",
-    //   data: {
-    //     categorySelected,
-    //     durationSelected
-    //   },
-    //   method: "GET"
-    // })
+
+    $.ajax({
+      url: "/api/createevent",
+      data: {
+        timeStart,
+        timeEnd,
+        eventName,
+        eventDesc,
+        category,
+        id
+      },
+      method: "POST"
+    })
   }
 
 

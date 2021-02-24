@@ -40,6 +40,7 @@ module.exports = function(app) {
   });
 
   app.post("/api/createevent", (req, res) => {
+    console.log('request received')
     const { timeStart, timeEnd, eventName, eventDesc, category } = req.body;
     const user_id = req.body.id;
     db.Events.create({
@@ -50,7 +51,7 @@ module.exports = function(app) {
       category,
       user_id
     })
-      .then(() => res.json())
+      .then(() => res.redirect("/calendar/:" + user_id))
       .catch(err => {
         res.status(401).json(err);
       })
