@@ -59,6 +59,20 @@ $(() => {
     submitExerciseReqHandler();
   }
 
+  function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+
   const saveVideoHandler = () => {
     const categorySelected = $("#category").val();
     const durationSelected = $("#duration").val();
@@ -67,12 +81,8 @@ $(() => {
     const minutesSelected = $("#workout-minutes").val();
     const arrayOfUrl = window.location.href.split("/");
     const id = parseInt(arrayOfUrl[arrayOfUrl.length -1]);
-    console.log(dateSelected);
-    console.log(hourSelected);
-    console.log(minutesSelected);
-    console.log(id);
-
-    const timeStamp = "";
+    const date = formatDate(dateSelected);
+    const timeStamp = `${date} ${hourSelected}:${minutesSelected}:00`;
 
     // $.ajax({
     //   url: "/api/post",
