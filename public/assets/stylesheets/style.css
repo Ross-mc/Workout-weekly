@@ -111,6 +111,11 @@ input {
 	border-radius: 8px;
 }
 
+.event {
+  background-color: red;
+  border-radius: 2px;
+}
+
 
 @media(min-width: 1000px){
 	.yt{

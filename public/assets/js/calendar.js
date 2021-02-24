@@ -79,6 +79,8 @@ $(() => {
     const dateSelected = $("#workout-date").val();
     const hourSelected = $("#workout-hour").val();
     const minutesSelected = parseInt($("#workout-minutes").val());
+    const yTel = $("iframe");
+    const ytUrl = yTel.attr("src");
     let hourEnd = parseInt(hourSelected);
     let minutesEnd = minutesSelected;
     if (minutesSelected + durationSelected > 60){
@@ -95,8 +97,8 @@ $(() => {
     const date = formatDate(dateSelected);
     const timeStart = `${date} ${hourSelected}:${minutesSelected}:00`;
     const timeEnd = `${date} ${hourEnd}:${minutesEnd}:00`;
-    const eventName = `${category} Exercise`;
-    const eventDesc = "";
+    const eventName = `${category}`;
+    const eventDesc = ytUrl;
     console.log(timeEnd)
 
 

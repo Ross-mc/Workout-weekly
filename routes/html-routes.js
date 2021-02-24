@@ -1,8 +1,7 @@
 // Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 const db = require("../models");
-const getCurrentWeek = require("../controllers/getCurrentWeek");
-const moment = require("moment");
+const getValidEvents = require("../controllers/getValidEvents")
 
 module.exports = function(app) {
   app.get("/", (req, res) => {
@@ -34,22 +33,11 @@ module.exports = function(app) {
       db.Events.findAll({
         where: {
           user_id: id,
-        }
+        },
+        order: [["timeStart", "ASC"]]
       }).then(userData => {
-        const { startOfWeek, endOfWeek, daysOfWeek } = getCurrentWeek();
-
-        const currentEvents = userData.filter(event => {
-          const startOfEvent = moment(event.dataValues.timeStart).unix();
-          const endOfEvent = moment(event.dataValues.timeEnd).unix();
-          if (startOfEvent > startOfWeek && endOfEvent < endOfWeek){
-            return true;
-          }
-        });
-
-        
-        
-
-        res.render("calendar", {currentEvents, daysOfWeek});
+        const daysOfWeekWithEvents = getValidEvents(userData);
+        res.render("calendar", {daysOfWeekWithEvents});
       })
       
     }
