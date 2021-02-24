@@ -18,6 +18,10 @@ module.exports = function(app) {
         selectedPlaylistId,
         durationSelected
       );
+      if (newVideoArr.length === 0){
+        res.json("Failed to connect to youtube API");
+        return;
+      }
       const randonVideoNum = Math.floor(Math.random() * newVideoArr.length);
       const newVideo = newVideoArr[randonVideoNum];
       const videoUrl = `https://www.youtube.com/embed/${newVideo.id}`;

@@ -2,6 +2,20 @@ $(() => {
   const submitExerciseReqHandler = () => {
     const categorySelected = $("#category").val();
     const durationSelected = $("#duration").val();
+    const dateSelected = $("#workout-date").val();
+    if (categorySelected === "default"){
+      alert("Please select a category");
+      return;
+    }
+    if (durationSelected === "default"){
+      alert("Please select a duration");
+      return;
+    }
+    if (dateSelected === ""){
+      alert("Please enter a date")
+      return;
+    }
+
     $.ajax({
       url: "/api/getVideo",
       data: {
@@ -10,6 +24,10 @@ $(() => {
       },
       method: "GET"
     }).then(res => {
+      if (res === "Failed to connect to youtube API"){
+        alert(res + "\nPlease try again later");
+        return
+      }
       const ytContainer = $("<div class = 'container yt'>");
       const ytRow = $("<div class='row'>");
       const ytDiv = $(
@@ -39,6 +57,10 @@ $(() => {
     const ytContainer = $(".yt");
     ytContainer.fadeOut(400);
     submitExerciseReqHandler();
+  }
+
+  const saveVideoHandler = () => {
+
   }
 
 
