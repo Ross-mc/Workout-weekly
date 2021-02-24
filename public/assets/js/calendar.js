@@ -10,7 +10,8 @@ $(() => {
       },
       method: "GET"
     }).then(res => {
-      const ytContainer = $("<div class = 'container'>");
+      const ytContainer = $("<div class = 'container yt'>");
+      const ytRow = $("<div class='row'>");
       const ytDiv = $(
         "<div class = 'ytDiv embed-responsive embed-responsive-16by9'>"
       );
@@ -21,43 +22,34 @@ $(() => {
       ytDiv.append(videoEl);
       const saveBtn = $("<button class ='btn btn-primary' type= 'submit'>");
       const searchAgainBtn = $(
-        "<button class='btn btn-primary' type='reset' value='Reset'>"
+        "<button class='btn btn-primary' type='reset' value='Reset' id='searchAgain'>"
       );
       saveBtn.html("Save Video");
       searchAgainBtn.html("Search Again");
-      ytContainer.append(ytDiv, saveBtn, searchAgainBtn);
+      ytRow.append(ytDiv)
+      const row2 = $("<div class='row'>");
+      row2.append(saveBtn, searchAgainBtn)
+      ytContainer.append(ytRow, row2);
       $("body").append(ytContainer);
+      ytContainer.fadeIn(400);
     });
   };
+
+  const searchAgainHandler = () => {
+    const ytContainer = $(".yt");
+    ytContainer.fadeOut(400);
+    submitExerciseReqHandler();
+  }
+
+
   $("#submitExerciseReq").on("click", submitExerciseReqHandler);
+
+  //dynamic click listeners
+
+  $("body").on("click", "#searchAgain", searchAgainHandler);
 
   var workoutDatePicker = new Pikaday({ field: $('#workout-date')[0] });
   var eventDatePicker = new Pikaday({ field: $('#event-date')[0] });
 
-  // const hours = []
-  //       for(let i = 0; i < 24; i++) {
-  //         let time = ""
-  //         if(i < 10) {
-  //           time = `0${i}:00`
-  //         }
-  //         else {
-  //           time = `${i}:00`
-  //         }
-  //         hours.push(time)
-  //       }
 
-  //       $(".day").each((i, elem) => {
-  //         hours.forEach(hour => { 
-  //           console.log(hour)
-  //           const div = $("<div class='hour'>")
-  //           const p = $("<p class='time'>")
-  //           p.text(hour)
-  //           div.append(p)
-
-  //           // console.log()
-
-  //           $(elem).append(div)
-  //         })
-
-  //       })
 });
