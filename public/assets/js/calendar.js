@@ -75,23 +75,29 @@ $(() => {
 
   const saveVideoHandler = () => {
     const category = $("#category").val();
-    const durationSelected = $("#duration").val();
+    const durationSelected = parseInt($("#duration").val());
     const dateSelected = $("#workout-date").val();
     const hourSelected = $("#workout-hour").val();
-    const minutesSelected = $("#workout-minutes").val();
-    let hourEnd = hourSelected;
+    const minutesSelected = parseInt($("#workout-minutes").val());
+    let hourEnd = parseInt(hourSelected);
     let minutesEnd = minutesSelected;
     if (minutesSelected + durationSelected > 60){
       minutesEnd = minutesSelected + durationSelected - 60;
       hourEnd++
+    } else{
+      minutesEnd = minutesSelected + durationSelected;
+    }
+    if (hourEnd < 10){
+      hourEnd = "0" + hourEnd;
     }
     const arrayOfUrl = window.location.href.split("/");
     const id = parseInt(arrayOfUrl[arrayOfUrl.length -1]);
     const date = formatDate(dateSelected);
     const timeStart = `${date} ${hourSelected}:${minutesSelected}:00`;
-    const timeEnd = `${date} ${hourEnd}: ${minutesEnd}:00`;
+    const timeEnd = `${date} ${hourEnd}:${minutesEnd}:00`;
     const eventName = `${category} Exercise`;
     const eventDesc = "";
+    console.log(timeEnd)
 
 
     $.ajax({
@@ -105,6 +111,13 @@ $(() => {
         id
       },
       method: "POST"
+    }).then(res => {
+      if(res === "Success"){
+        alert("Video Successfully Saved to DB");
+        window.location.reload();
+      } else {
+        alert("error connecting to database, please try again later")
+      }
     })
   }
 
