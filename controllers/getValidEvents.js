@@ -12,6 +12,10 @@ const getValidEvents = userData => {
       }
     });
 
+    if (days.length > 7){
+        days.pop();
+    }
+
 
     const daysOfWeekWithEvents = days.map(day => {
       return currentEvents.reduce((acc, event) => {
@@ -20,6 +24,13 @@ const getValidEvents = userData => {
         }
         return acc;
       }, {day: moment(day).format("dddd, MMMM Do YYYY"), events: []})
+    })
+
+    daysOfWeekWithEvents.forEach(elem => {
+        elem.events = elem.events.map(event => {
+            event.dataValues.timeStart = moment(event.dataValues.timeStart).format("hh:mm");
+            return event;
+        })
     })
 
     return daysOfWeekWithEvents
