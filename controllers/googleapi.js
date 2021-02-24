@@ -38,6 +38,9 @@ const getYTVideo = async (playlistId, durationInMins) => {
       });
 
       validVideos = videosOfCorrectLength.length > 1 ? videosOfCorrectLength : [videoArr[Math.floor(Math.random() * videoArr.length)]];
+    })
+    .catch(res => {
+      return res
     });
   });
   return validVideos;

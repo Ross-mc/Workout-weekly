@@ -2,6 +2,7 @@
 const db = require("../models");
 const passport = require("../config/passport");
 const getYTVideo = require("../controllers/googleapi");
+const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
   app.get("/api/getVideo", (req, res) => {
@@ -18,6 +19,10 @@ module.exports = function(app) {
         selectedPlaylistId,
         durationSelected
       );
+      if (newVideoArr.length === 0){
+        res.json("Failed to connect to youtube API");
+        return;
+      }
       const randonVideoNum = Math.floor(Math.random() * newVideoArr.length);
       const newVideo = newVideoArr[randonVideoNum];
       const videoUrl = `https://www.youtube.com/embed/${newVideo.id}`;
@@ -35,7 +40,8 @@ module.exports = function(app) {
     });
   });
 
-  app.post("/api/createevent", (req, res) => {
+  app.post("/api/createevent",  (req, res) => {
+    console.log('request received')
     const { timeStart, timeEnd, eventName, eventDesc, category } = req.body;
     const user_id = req.body.id;
     db.Events.create({
@@ -46,10 +52,8 @@ module.exports = function(app) {
       category,
       user_id
     })
-      .then(() => res.json())
-      .catch(err => {
-        res.status(401).json(err);
-      })
+      .then(() => res.json("Success"))
+
   })
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to

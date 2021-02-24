@@ -1,29 +1,75 @@
 <nav class="navbar navbar-light bg-light">
-  <form class="container-fluid justify-content-start">
-    <button class="btn btn-outline-success me-2" type="button">LOGOUT</button>
-  </form>
+    <form class="container-fluid justify-content-start">
+        <button class="btn btn-outline-success me-2" type="button">LOGOUT</button>
+    </form>
 </nav>
 <div class="container">
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <h2>Exercise Form</h2>
+        <div class="col-md-6">
+            <h2>Find an exercise</h2>
             <form class="exercise">
                 <div class="form-group">
-                    <div class="input-group">
-                        <select class="custom-select" id="category">
-                            <option selected>Choose a category: </option>
-                            <option value="cardio">Cardio</option>
-                            <option value="yoga">Yoga</option>
-                            <option value="hiit">HIIT</option>
-                            <option value="strength">Strength</option>
-                            <option value="pilates">Pilates</option>
-                        </select>
-                        <select class="custom-select" id="duration">
-                            <option selected>Workout length: </option>
+                    <select class="custom-select" id="category">
+                        <option value="default" selected>Choose a category: </option>
+                        <option value="cardio">Cardio</option>
+                        <option value="yoga">Yoga</option>
+                        <option value="hiit">HIIT</option>
+                        <option value="strength">Strength</option>
+                        <option value="pilates">Pilates</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select class="custom-select" id="duration">
+                        <option value="default" selected>Workout length: </option>
+                        <option value="20">20</option>
+                        <option value="40">40</option>
+                        <option value="60">60</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="workout-date">Date</label>
+                    <input type="text" id="workout-date">
+                </div>
+                <div class="form-group">
+                    <label for="workout-time">Time</label>
+                    <div class="input-group" id="workout-time">
+                        <select class="custom-select" id="workout-hour">
+                            <option value="00">00</option>
+                            <option value="01">01</option>
+                            <option value="02">02</option>
+                            <option value="03">03</option>
+                            <option value="04">04</option>
+                            <option value="05">05</option>
+                            <option value="06">06</option>
+                            <option value="07">07</option>
+                            <option value="08">08</option>
+                            <option value="09">09</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
                             <option value="20">20</option>
-                            <option value="40">40</option>
-                            <option value="60">60</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
                         </select>
+                        <select class="custom-select" id="workout-minutes">
+                            <option value="00">00</option>
+                            <option value="15">15</option>
+                            <option value="30">30</option>
+                            <option value="45">45</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
                         <div class="input-group-append">
                             <button class="btn btn-outline-secondary" type="button"
                                 id="submitExerciseReq">Submit</button>
@@ -31,20 +77,87 @@
                     </div>
                 </div>
             </form>
-            <br />
+        </div>
+        <div class="col-md-6">
+            <h2>Add an event</h2>
+            <form>
+                <div class="form-group">
+                    <select class="custom-select" id="work-category">
+                        <option selected>Choose a category: </option>
+                        <option value="meeting">Meeting</option>
+                        <option value="appointment">Appointment</option>
+                        <option value="busy">Busy</option>
+                        <option value="holiday">Holiday</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="event-title">Event Title</label>
+                    <input type="text" class="form-control" id="event-title" placeholder="Event title">
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea class="form-control" id="description" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="event-date">Event Date</label>
+                    <input type="text" id="event-date">
+                </div>
+                <div class="form-group">
+                    <label for="event-time">Time</label>
+                    <div class="input-group" id="event-time">
+                        <select class="custom-select" id="event-hour">
+                            <option value="00">00</option>
+                            <option value="01">01</option>
+                            <option value="02">02</option>
+                            <option value="03">03</option>
+                            <option value="04">04</option>
+                            <option value="05">05</option>
+                            <option value="06">06</option>
+                            <option value="07">07</option>
+                            <option value="08">08</option>
+                            <option value="09">09</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                        </select>
+                        <select class="custom-select" id="event-minutes">
+                            <option value="00">00</option>
+                            <option value="15">15</option>
+                            <option value="30">30</option>
+                            <option value="45">45</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button" id="submitEventReq">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
-<div class="container">
-    <div class="row">
-        <div class="col-md-12" id ="weekly-calendar">
-            {{#each daysOfWeek}}
-            <div class = "day">
-                <h3>{{date}}</h3>
-            </div>
-
-            {{/each}}
+<div class="container" id="calendar-cont">
+    <div class="row seven-cols">
+        {{#each daysOfWeek}}
+        <div class="col-md-1 day">
+            <h5>{{date}}</h3>
         </div>
+
+        {{/each}}
     </div>
 </div>
 
@@ -52,4 +165,5 @@
 {{!-- display user events --}}
 {{!-- add logic for creating events and set up post route to db --}}
 {{!-- add signout button --}}
+<script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
 <script src="/assets/js/calendar.js"></script>
