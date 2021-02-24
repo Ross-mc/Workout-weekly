@@ -34,7 +34,8 @@ module.exports = function(app) {
       db.Events.findAll({
         where: {
           user_id: id,
-        }
+        },
+        order: [["timeStart", "ASC"]]
       }).then(userData => {
         const { startOfWeek, endOfWeek, daysOfWeek } = getCurrentWeek();
 
@@ -46,7 +47,7 @@ module.exports = function(app) {
           }
         });
 
-        
+        console.log(currentEvents)
         
 
         res.render("calendar", {currentEvents, daysOfWeek});
