@@ -230,7 +230,7 @@ $(() => {
     const date = formatDate(dateSelected);
     const timeStart = `${date} ${hourSelected}:${minutesSelected}:00`;
     const timeEnd = timeStart;
-    const eventName = `${category}`;
+    const eventName = $("#event-title").val();
     const eventDesc = $("#description").val();
     console.log(timeEnd)
 
