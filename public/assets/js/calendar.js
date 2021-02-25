@@ -121,18 +121,91 @@ $(() => {
         alert("error connecting to database, please try again later")
       }
     })
+  };
+
+  const displayYTModal = (eventTitle, src) => {
+    const ytContainer = $("<div class = 'container yt'>");
+    const ytRow = $("<div class='row'>");
+    const ytTitle = $("<h3>");
+    ytTitle.html(eventTitle)
+    const ytDiv = $(
+      "<div class = 'ytDiv embed-responsive embed-responsive-16by9'>"
+    );
+    const videoEl = $(
+      "<iframe class = 'embed-responsive-item' allowfullscreen>"
+    );
+    videoEl.attr("src", src);
+    ytDiv.append(videoEl);
+    ytRow.append(ytTitle, ytDiv);
+    const deleteEvent = $(
+      "<button class='btn btn-primary 'id='deleteEvent'>"
+    );
+    deleteEvent.html("Remove event from calendar")
+    const closeEvent = $(
+      "<button class='btn btn-primary 'id='closeEvent'>"
+    );
+    closeEvent.html("Close event")
+    const row2 = $("<div class='row'>");
+    row2.append(deleteEvent, closeEvent)
+    ytContainer.append(ytRow, row2);
+    $("body").append(ytContainer);
+    ytContainer.fadeIn(400);
+  };
+
+  const displayApptModal = (eventTitle, eventDescription) => {
+    const apptContainer = $("<div class = 'container yt'>");
+    const apptRow = $("<div class='row'>");
+    const apptDiv = $(
+      "<div class = 'apptDiv'>"
+    );
+    const apptTitle = $("<h3>");
+    apptTitle.html(eventTitle)
+    const p = $("<p>");
+    p.html(eventDescription)
+    apptDiv.append(apptTitle, p);
+    apptRow.append(apptDiv);
+    const deleteEvent = $(
+      "<button class='btn btn-primary 'id='deleteEvent'>"
+    );
+    deleteEvent.html("Remove event from calendar")
+    const closeEvent = $(
+      "<button class='btn btn-primary 'id='closeEvent'>"
+    );
+    closeEvent.html("Close event")
+    const row2 = $("<div class='row'>");
+    row2.append(deleteEvent, closeEvent)
+    apptContainer.append(apptRow, row2);
+    $("body").append(apptContainer);
+    apptContainer.fadeIn(400);
+  }
+
+  const eventClickHandler = event => {
+    const eventClicked = $(event.currentTarget);
+    const eventDescription = eventClicked.attr("data-desc");
+    const eventTitle = eventClicked.children(":first")[0].innerText;
+    console.log(eventTitle)
+    if (eventDescription.startsWith("http")){
+      displayYTModal(eventTitle, eventDescription);
+    } else{
+      displayApptModal(eventTitle, eventDescription);
+    }
+  };
+
+  const closeEventHandler = () => {
+    $(".yt").fadeOut(400, () => {
+      $(".yt").remove();
+    })
   }
 
 
+  //click listeners
   $("#submitExerciseReq").on("click", submitExerciseReqHandler);
 
   //dynamic click listeners
 
   $("body").on("click", "#searchAgain", searchAgainHandler);
   $("body").on("click", "#saveVideo", saveVideoHandler);
-
-  var workoutDatePicker = new Pikaday({ field: $('#workout-date')[0] });
-  var eventDatePicker = new Pikaday({ field: $('#event-date')[0] });
-
+  $("body").on("click", ".event", eventClickHandler);
+  $("body").on("click", "#closeEvent", closeEventHandler);
 
 });

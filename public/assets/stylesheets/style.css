@@ -98,7 +98,7 @@ input {
   width: 100%;
 }
 
-.yt{
+.yt, .appt{
 	display: none;
 	position: fixed;
 	width: 80vw;
@@ -107,18 +107,25 @@ input {
 	left: 50%;
 	margin-top: -25vw;
 	margin-left: -40vw;
-	background-color: #59aae0;
+	background-color: #90c1e2;
 	border-radius: 8px;
 }
 
 .event {
-  background-color: red;
+	background-color: #0c8ce0;
   border-radius: 2px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  margin-bottom: 4px;
+}
+
+h6{
+  text-align: center;
 }
 
 
 @media(min-width: 1000px){
-	.yt{
+	.yt, .appt{
 		width: 600px;
 		height: 375px;
 		margin-top: -187.75px;
