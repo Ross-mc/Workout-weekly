@@ -262,7 +262,7 @@ $(() => {
   $("#submitEventReq").on("click", saveEventHandler);
 
 
-  //dynamic click listeners
+  //dynamic click listeners.
 
   $("body").on("click", "#searchAgain", searchAgainHandler);
   $("body").on("click", "#saveVideo", saveVideoHandler);
