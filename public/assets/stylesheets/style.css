@@ -13,15 +13,15 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
-#calendar-cont{
-  border-bottom: 2px solid rgb(54, 54, 54);;
+#calendar-cont {
+  border-bottom: 2px solid rgb(54, 54, 54);
 }
 
-.row{
-  overflow: hidden; 
+.row {
+  overflow: hidden;
 }
 
-[class*="col-"]{
+[class*="col-"] {
   margin-bottom: -99999px;
   padding-bottom: 99999px;
 }
@@ -48,10 +48,10 @@ form.login {
 @media (max-width: 992px) {
   .day {
     border-right: 2px solid rgb(54, 54, 54);
-	border-bottom: none;
+    border-bottom: none;
   }
   .day:last-child {
-	border-bottom: 2px solid rgb(54, 54, 54);
+    border-bottom: 2px solid rgb(54, 54, 54);
   }
 }
 
@@ -91,7 +91,7 @@ form.login {
   float: left;
 }
 
-form {
+form.login {
   background-color: #ffffff;
   display: flex;
   align-items: center;
@@ -110,37 +110,85 @@ input {
   width: 100%;
 }
 
-.yt, .appt{
-	display: none;
-	position: fixed;
-	width: 80vw;
-	height: 50vw;
-	top: 50%;
-	left: 50%;
-	margin-top: -25vw;
-	margin-left: -40vw;
-	background-color: #90c1e2;
-	border-radius: 8px;
+.yt,
+.appt {
+  display: none;
+  position: fixed;
+  width: 80vw;
+  height: 50vw;
+  top: 50%;
+  left: 50%;
+  margin-top: -25vw;
+  margin-left: -40vw;
+  background-color: #90c1e2;
+  border-radius: 8px;
 }
 
 .event {
-	background-color: #0c8ce0;
+  background-color: #0c8ce0;
   border-radius: 2px;
   padding-top: 4px;
   padding-bottom: 4px;
   margin-bottom: 4px;
 }
 
-h6{
+h6 {
   text-align: center;
 }
 
+@media (min-width: 1000px) {
+  .yt,
+  .appt {
+    width: 600px;
+    height: 375px;
+    margin-top: -187.75px;
+    margin-left: -300px;
+  }
+}
 
-@media(min-width: 1000px){
-	.yt, .appt{
-		width: 600px;
-		height: 375px;
-		margin-top: -187.75px;
-		margin-left: -300px;
+.login-block {
+  background: #de6262; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom,
+    #ffb88c,
+    #de6262
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #ffb88c,
+    #de6262
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  float: left;
+  width: 100%;
+  padding: 50px 0;
+}
+
+.login-sec {
+	background-color: #ffffff;
+}
+
+#loginH2 {
+	font-weight: 700;
+}
+
+
+@media (max-width:992px) {
+	.bg {
+		background: #de6262; /* fallback for old browsers */
+	background: -webkit-linear-gradient(
+	  to bottom,
+	  #ffb88c,
+	  #de6262
+	); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(
+	  to bottom,
+	  #ffb88c,
+	  #de6262)
 	}
+	.login-sec {
+		background: none;
+	}
+	#loginH2 {
+		background: none;
+	} 
 }
