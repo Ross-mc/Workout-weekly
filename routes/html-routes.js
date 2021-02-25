@@ -37,6 +37,7 @@ module.exports = function(app) {
         order: [["timeStart", "ASC"]]
       }).then(userData => {
         const daysOfWeekWithEvents = getValidEvents(userData);
+        console.log(daysOfWeekWithEvents[1].events)
         res.render("calendar", {daysOfWeekWithEvents});
       })
       

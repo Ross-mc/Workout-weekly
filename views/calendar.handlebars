@@ -156,7 +156,7 @@
         <div class="col-md-1 day">
             <h5>{{day}}</h5>
                 {{#each events}}
-                <div class="event {{dataValues.category}}" data-desc="{{dataValues.eventDesc}}">
+                <div class="event {{dataValues.category}}" data-desc="{{dataValues.eventDesc}}" data-id="{{dataValues.id}}">
                     <h6>{{dataValues.timeStart}} - {{dataValues.eventName}}</h6>
                 </div>
                 {{/each}}
