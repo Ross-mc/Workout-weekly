@@ -229,7 +229,8 @@ $(() => {
   $("body").on("click", "#closeEvent", closeEventHandler);
   $("body").on("click", "#deleteEvent", deleteEventHandler);
 
-  var workoutDatePicker = new Pikaday({ field: $('#workout-date')[0] });
-  var eventDatePicker = new Pikaday({ field: $('#event-date')[0] });
+  let workoutDatePicker = new Pikaday({ field: $('#workout-date')[0] });
+  let eventDatePicker = new Pikaday({ field: $('#event-date')[0] });
+  console.log(workoutDatePicker, eventDatePicker)
 
 });
