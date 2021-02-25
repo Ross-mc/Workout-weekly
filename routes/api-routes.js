@@ -73,6 +73,16 @@ module.exports = function(app) {
       });
   });
 
+  app.delete("/api/delete/:id/:user_id", (req, res) => {
+    db.Events.destroy({
+      where: {
+        id: req.params.id,
+        user_id: req.params.user_id
+      }
+    })
+    .then(() => res.json("Success"))
+  })
+
   // Route for logging user out
   app.get("/logout", (req, res) => {
     req.logout();

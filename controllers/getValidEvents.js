@@ -28,7 +28,7 @@ const getValidEvents = userData => {
 
     daysOfWeekWithEvents.forEach(elem => {
         elem.events = elem.events.map(event => {
-            event.dataValues.timeStart = moment(event.dataValues.timeStart).format("hh:mm");
+            event.dataValues.timeStart = moment(event.dataValues.timeStart).format("HH:mm");
             return event;
         })
     })
