@@ -155,18 +155,11 @@
         {{#each daysOfWeekWithEvents}}
         <div class="col-md-1 day">
             <h5>{{day}}</h5>
-            <div class="container">
                 {{#each events}}
-                <div class="row event {{dataValues.category}}" data-desc='{{dataValues.description}}'>
-                    <div class="col-2-md">
-                        <h6>{{dataValues.timeStart}}</h6>
-                    </div>
-                    <div class="col-8-md">
-                        <h6>{{dataValues.eventName}}</h6>
-                    </div>
+                <div class="event {{dataValues.category}}" data-desc="{{dataValues.eventDesc}}">
+                    <h6>{{dataValues.timeStart}} - {{dataValues.eventName}}</h6>
                 </div>
                 {{/each}}
-            </div>
         </div>
 
         {{/each}}
