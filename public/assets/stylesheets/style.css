@@ -164,31 +164,55 @@ h6 {
 }
 
 .login-sec {
-	background-color: #ffffff;
+  background-color: #ffffff;
 }
 
 #loginH2 {
-	font-weight: 700;
+  font-weight: 700;
 }
 
+@media (max-width: 992px) {
+  .bg {
+    background: #de6262; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to bottom,
+      #ffb88c,
+      #de6262
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #ffb88c, #de6262);
+  }
+  .login-sec {
+    background: none;
+  }
+  #loginH2 {
+    background: none;
+  }
+}
 
-@media (max-width:992px) {
-	.bg {
-		background: #de6262; /* fallback for old browsers */
-	background: -webkit-linear-gradient(
-	  to bottom,
-	  #ffb88c,
-	  #de6262
-	); /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(
-	  to bottom,
-	  #ffb88c,
-	  #de6262)
-	}
-	.login-sec {
-		background: none;
-	}
-	#loginH2 {
-		background: none;
-	} 
+/* SIGN UP FORM */
+
+#main-container {
+  background: #de6262; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom,
+    #ffb88c,
+    #de6262
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #ffb88c,
+    #de6262
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  width: 100%;
+  padding: 50px 0;
+}
+
+#signup-main {
+  background-color: #fff;
+  width: 40%;
+  box-shadow: 15px 20px 0px rgba(0, 0, 0, 0.1);
+  justify-content: center;
+  flex-direction: column;
+  display: flex;
 }
