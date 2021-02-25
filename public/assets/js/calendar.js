@@ -82,8 +82,8 @@ $(() => {
     const yTel = $("iframe");
     const ytUrl = yTel.attr("src");
     let hourEnd = parseInt(hourSelected);
-    let minutesEnd = minutesSelected;
-    if (minutesSelected + durationSelected > 60){
+    let minutesEnd;
+    if (minutesSelected + durationSelected >= 60){
       minutesEnd = minutesSelected + durationSelected - 60;
       hourEnd++
     } else{
@@ -123,10 +123,10 @@ $(() => {
     })
   };
 
-  const displayYTModal = (eventTitle, src) => {
+  const displayYTModal = (eventTitle, src, id) => {
     const ytContainer = $("<div class = 'container yt'>");
     const ytRow = $("<div class='row'>");
-    const ytTitle = $("<h3>");
+    const ytTitle = $("<h3 id='modalTitle'>");
     ytTitle.html(eventTitle)
     const ytDiv = $(
       "<div class = 'ytDiv embed-responsive embed-responsive-16by9'>"
@@ -140,7 +140,8 @@ $(() => {
     const deleteEvent = $(
       "<button class='btn btn-primary 'id='deleteEvent'>"
     );
-    deleteEvent.html("Remove event from calendar")
+    deleteEvent.html("Remove event from calendar");
+    deleteEvent.attr("data-id", id);
     const closeEvent = $(
       "<button class='btn btn-primary 'id='closeEvent'>"
     );
@@ -152,13 +153,13 @@ $(() => {
     ytContainer.fadeIn(400);
   };
 
-  const displayApptModal = (eventTitle, eventDescription) => {
+  const displayApptModal = (eventTitle, eventDescription, id) => {
     const apptContainer = $("<div class = 'container yt'>");
     const apptRow = $("<div class='row'>");
     const apptDiv = $(
       "<div class = 'apptDiv'>"
     );
-    const apptTitle = $("<h3>");
+    const apptTitle = $("<h3 id='modalTitle'>");
     apptTitle.html(eventTitle)
     const p = $("<p>");
     p.html(eventDescription)
@@ -167,9 +168,10 @@ $(() => {
     const deleteEvent = $(
       "<button class='btn btn-primary 'id='deleteEvent'>"
     );
-    deleteEvent.html("Remove event from calendar")
+    deleteEvent.html("Remove event from calendar");
+    deleteEvent.attr("data-id", id);
     const closeEvent = $(
-      "<button class='btn btn-primary 'id='closeEvent'>"
+      "<button class='btn btn-primary' id='closeEvent'>"
     );
     closeEvent.html("Close event")
     const row2 = $("<div class='row'>");
@@ -182,18 +184,36 @@ $(() => {
   const eventClickHandler = event => {
     const eventClicked = $(event.currentTarget);
     const eventDescription = eventClicked.attr("data-desc");
+    const eventId= eventClicked.attr("data-id");
     const eventTitle = eventClicked.children(":first")[0].innerText;
     console.log(eventTitle)
     if (eventDescription.startsWith("http")){
-      displayYTModal(eventTitle, eventDescription);
+      displayYTModal(eventTitle, eventDescription, eventId);
     } else{
-      displayApptModal(eventTitle, eventDescription);
+      displayApptModal(eventTitle, eventDescription, eventId);
     }
   };
 
   const closeEventHandler = () => {
     $(".yt").fadeOut(400, () => {
       $(".yt").remove();
+    })
+  };
+
+  const deleteEventHandler = () => {
+    const id = $("#deleteEvent").attr("data-id");
+    const arrayOfUrl = window.location.href.split("/");
+    const user_id = parseInt(arrayOfUrl[arrayOfUrl.length -1]);
+    $.ajax({
+      url: `/api/delete/${id}/${user_id}`,
+      method: "DELETE"
+    }).then(res => {
+      if(res === "Success"){
+        alert("Event Successfully removed from DB");
+        window.location.reload();
+      } else {
+        alert("error connecting to database, please try again later")
+      }
     })
   }
 
@@ -207,5 +227,9 @@ $(() => {
   $("body").on("click", "#saveVideo", saveVideoHandler);
   $("body").on("click", ".event", eventClickHandler);
   $("body").on("click", "#closeEvent", closeEventHandler);
+  $("body").on("click", "#deleteEvent", deleteEventHandler);
+
+  var workoutDatePicker = new Pikaday({ field: $('#workout-date')[0] });
+  var eventDatePicker = new Pikaday({ field: $('#event-date')[0] });
 
 });

@@ -80,12 +80,7 @@ module.exports = function(app) {
         user_id: req.params.user_id
       }
     })
-    .then(() => {
-      res.redirect("/calendar/" + req.params.id)
-    })
-    .catch(err => {
-      res.status(401).json(err)
-    })
+    .then(() => res.json("Success"))
   })
 
   // Route for logging user out
