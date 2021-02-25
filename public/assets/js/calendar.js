@@ -217,9 +217,50 @@ $(() => {
     })
   }
 
+  const saveEventHandler = () => {
+    const category = $("#work-category").val();
+    
+    const dateSelected = $("#event-date").val();
+    const hourSelected = $("#event-hour").val();
+    const minutesSelected = parseInt($("#event-minutes").val());
+ 
+   
+    const arrayOfUrl = window.location.href.split("/");
+    const id = parseInt(arrayOfUrl[arrayOfUrl.length -1]);
+    const date = formatDate(dateSelected);
+    const timeStart = `${date} ${hourSelected}:${minutesSelected}:00`;
+    const timeEnd = timeStart;
+    const eventName = $("#event-title").val();
+    const eventDesc = $("#description").val();
+    console.log(timeEnd)
+
+
+    $.ajax({
+      url: "/api/createevent",
+      data: {
+        timeStart,
+        timeEnd,
+        eventName,
+        eventDesc,
+        category,
+        id
+      },
+      method: "POST"
+    }).then(res => {
+      if(res === "Success"){
+        alert("Event Successfully Saved to DB");
+        window.location.reload();
+      } else {
+        alert("error connecting to database, please try again later")
+      }
+    })
+  };
+
 
   //click listeners
   $("#submitExerciseReq").on("click", submitExerciseReqHandler);
+  $("#submitEventReq").on("click", saveEventHandler);
+
 
   //dynamic click listeners
 
