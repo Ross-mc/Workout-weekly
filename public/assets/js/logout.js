@@ -13,10 +13,17 @@ $(document).ready(() => {
 
     
 })
+const logout = () => {
+    const logoutBtn = $("#logout-btn").val();
 
 
-
-app.delete('/logout', function (req, res) {
-    req.session.currentUser = null;
-    res.redirect('/');
-});
+$.ajax({
+    url: "/logout",
+    data: {
+        logoutBtn
+    },
+    method: "GET" 
+}).then(res => {
+    
+})
+}
