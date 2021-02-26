@@ -3,8 +3,7 @@ const config = (env) => {
   const db_config = {
     "development": {
       "username": "root",
-      "password": "Jabeen98",
-  
+      "password": "",
       "database": "workout_weekly_db",
       "host": "127.0.0.1",
       "dialect": "mysql"

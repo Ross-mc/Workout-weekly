@@ -10,10 +10,11 @@ const getYTVideo = async (playlistId, durationInMins) => {
   await axios(url).then(async (res) => {
     //data is an object, items is the array
     const videoArr = res.data.items;
-    const idStr = videoArr.reduce((str, video) => {
+    let idStr = videoArr.reduce((str, video) => {
       const id = video.snippet.resourceId.videoId;
       return str + "," + id;
     }, "");
+    idStr = idStr.startsWith(",") ? idStr.replace(",", "") : idStr
     const secondUrl = `https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id=${idStr}&key=${apikey}`;
     await axios(secondUrl).then((res) => {
       const videoArr = res.data.items;

@@ -2,6 +2,7 @@
 
 body {
   font-family: "Poppins", sans-serif;
+  padding-bottom: 20px;
 }
 
 nav {
@@ -31,15 +32,16 @@ form.login {
   border-top: 2px solid rgb(54, 54, 54);
   border-bottom: 2px solid rgb(54, 54, 54);
   border-left: 2px solid rgb(54, 54, 54);
+  background-color: #ecf0f1;
 }
 
-.day:nth-child(odd) {
+/* .day:nth-child(odd) {
   background-color: #59aae0;
 }
 
 .day:nth-child(even) {
   background-color: #ecf0f1;
-}
+} */
 
 .day:last-child {
   border-right: 2px solid rgb(54, 54, 54);
@@ -125,15 +127,18 @@ input {
 }
 
 .event {
-  background-color: #0c8ce0;
+  background-color: #003459;
   border-radius: 2px;
   padding-top: 4px;
   padding-bottom: 4px;
   margin-bottom: 4px;
+  color:#ffffff;
+  cursor: pointer;
 }
 
 h6 {
   text-align: center;
+  color:#ffffff;
 }
 
 @media (min-width: 1000px) {
@@ -164,17 +169,113 @@ h6 {
 }
 
 .login-sec {
-	background-color: #ffffff;
+  background-color: #ffffff;
 }
 
 #loginH2 {
-	font-weight: 700;
+  font-weight: 700;
+}
+
+@media (max-width: 992px) {
+  .bg {
+    background: #de6262; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to bottom,
+      #ffb88c,
+      #de6262
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #ffb88c, #de6262);
+  }
+  .login-sec {
+    background: none;
+  }
+  #loginH2 {
+    background: none;
+  }
+}
+
+/* ============ SIGN UP FORM ============ */
+
+#main-container {
+  background: #de6262; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom,
+    #ffb88c,
+    #de6262
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #ffb88c,
+    #de6262
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  width: 100%;
+  padding: 50px 0;
 }
 
 
-@media (max-width:992px) {
-	.bg {
-		background: #de6262; /* fallback for old browsers */
+/* Alters the main sign up box  */
+
+#signup-main {
+  background-color: #fff;
+  width: 40%;
+  box-shadow: 15px 20px 0px rgba(0, 0, 0, 0.1);
+  justify-content: center;
+  flex-direction: column;
+  display: flex;
+}
+
+/* ============ Main Calendar Page ============ */
+
+
+/* Colours for Different events */
+
+.meeting {
+	background-color: #7DCFB6;
+	cursor: pointer;
+}
+
+.holiday {
+	background-color: #33CA7F;
+	cursor: pointer;
+}
+
+.appointment {
+	background-color: #00171F;
+	cursor: pointer;
+}
+
+.busy {
+	background-color: #007EA7;
+	cursor: pointer;
+}
+
+
+/* Adds styling to the event form */ 
+
+#event-form {
+	background-color: #fff;
+  width: 40%;
+  box-shadow: 15px 20px 0px rgba(0, 0, 0, 0.1);
+  justify-content: center;
+  flex-direction: column;
+  display: flex;
+}
+
+/* Adds styling to the exercise form */
+
+#exercise-form {
+	background-color: #fff;
+	width: 40%;
+	box-shadow: 15px 20px 0px rgba(0, 0, 0, 0.1);
+	justify-content: center;
+	flex-direction: column;
+	display: flex;
+  }
+
+  /* Adds styling to the main calendar section */
+.calendar-section {
+	background: #de6262; /* fallback for old browsers */
 	background: -webkit-linear-gradient(
 	  to bottom,
 	  #ffb88c,
@@ -183,12 +284,55 @@ h6 {
 	background: linear-gradient(
 	  to bottom,
 	  #ffb88c,
-	  #de6262)
-	}
-	.login-sec {
-		background: none;
-	}
-	#loginH2 {
-		background: none;
-	} 
+	  #de6262);
+	  padding-top: 20px;
+}
+
+
+#calendar-main {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 10%;
+}
+
+/* Font weight for H2 elements  */
+
+h2 {
+	font-weight: 700;
+}
+
+/* Fomt weight for form labels */
+
+label {
+	font-weight: 600;
+}
+
+/* Font weight for H1 elements  */
+
+h1 {
+	font-weight: 700;
+}
+
+/* Adds styling for the Legend elements */
+
+.exerciseLi {
+	background-color: #003459;
+	
+}
+
+.circle {
+	height: 10px;
+	width: 10px;
+	border-radius: 50%;
+	display: inline-block;
+	margin-right: 10px;
+}
+
+ul {
+	list-style-type: none;
+}
+
+ul > li {
+	display: inline-block;
+	margin-right: 10px;
 }
