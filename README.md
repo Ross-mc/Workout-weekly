@@ -8,8 +8,9 @@
 4. [Testing Information](##testing-information)
 5. [Deployment](##deployment)
 6. [User Story](##user-story)
-6. [License](##license)
-7. [Questions](##questions)
+7. [Tech](##technology)
+8. [License](##license)
+9. [Questions](##questions)
 
 ## Introduction
 
@@ -31,9 +32,20 @@ Workout Weekly is available [here](https://workout-weekly.herokuapp.com/).
 
 ## User Story
 
-AS a busy worker who likes to keep fit
-I WANT an application that finds and schedules exercise for me
-SO THAT I keep my fitness levels high and maintain a productive work day
+AS a busy worker who likes to keep fit  
+I WANT an application that finds and schedules exercise for me  
+SO THAT I keep my fitness levels high and maintain a productive work day  
+
+## Technology
+
+- Node.js / Express.js
+- Seqeulize / MySQL
+- Google API
+- TDD with Jest.js
+- ESLint / Travis CI
+- Moment.js
+- Passport / Bcrypt
+- Axios
 
 ## License
 
