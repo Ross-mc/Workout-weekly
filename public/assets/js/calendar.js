@@ -115,7 +115,6 @@ $(() => {
       method: "POST"
     }).then(res => {
       if(res === "Success"){
-        alert("Video Successfully Saved to DB");
         window.location.reload();
       } else {
         alert("error connecting to database, please try again later")
@@ -209,7 +208,6 @@ $(() => {
       method: "DELETE"
     }).then(res => {
       if(res === "Success"){
-        alert("Event Successfully removed from DB");
         window.location.reload();
       } else {
         alert("error connecting to database, please try again later")
@@ -248,7 +246,6 @@ $(() => {
       method: "POST"
     }).then(res => {
       if(res === "Success"){
-        alert("Event Successfully Saved to DB");
         window.location.reload();
       } else {
         alert("error connecting to database, please try again later")
